@@ -1,0 +1,26 @@
+name: CI/CD Pipeline Local Floci
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v4
+
+    - name: Build de l'image Docker
+      run: |
+        docker build -t demo-app-dev:latest .
+
+    - name: Importer l'image dans K3s (Floci)
+      run: |
+        docker save demo-app-dev:latest | docker exec -i floci-eks-aws-eks-cluster-dev ctr images import -
+
+    - name: Redéployer sur Kubernetes
+      run: |
+        docker exec -i floci-eks-aws-eks-cluster-dev kubectl rollout restart deployment/demo-app-deployment
+        docker exec -i floci-eks-aws-eks-cluster-dev kubectl rollout status deployment/demo-app-deployment
