@@ -3,3 +3,4 @@ terraform/envs/dev/.terraform.*
 terraform/envs/dev/*.tfstate
 app/.env
 app/node_modules
+kubernetes/secret.yaml
