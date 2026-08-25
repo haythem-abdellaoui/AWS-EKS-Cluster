@@ -91,14 +91,3 @@ Expected response:
 ```
 
 ---
-
-## License
-
-This project is licensed under the MIT License — see the LICENSE file for details.
-
----
-
-## Notes / Tips
-
-- Save the architecture diagram image as `architecture.jpg` at the repository root to display it in the README.
-- The Kubernetes manifests are provided in the `kubernetes/` directory. Adjust service type, nodePort, or ingress to match your local Floci/K3s setup.
