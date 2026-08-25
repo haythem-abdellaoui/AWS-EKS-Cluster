@@ -1,0 +1,3 @@
+terraform/envs/dev/.terraform
+terraform/envs/dev/.terraform.*
+terraform/envs/dev/*.tfstate
